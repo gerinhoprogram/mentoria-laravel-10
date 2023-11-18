@@ -8,14 +8,14 @@
         @csrf
         <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Nome</label>
-            <input type="text" name="nome" class="form-control @error('nome') is-invalid @enderror">
+            <input type="text" value="{{old('nome')}}" name="nome" class="form-control @error('nome') is-invalid @enderror">
                 @if ($errors->has('nome'))
                     <div class="invalid-feedback">{{$errors->first('nome')}}</div>
                 @endif        
         </div>
         <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Valor</label>
-            <input type="text" class="form-control @error('valor') is-invalid @enderror" id="valor" name="valor">
+            <input type="text" value="{{old('valor')}}" class="form-control @error('valor') is-invalid @enderror" id="mascara_valor" name="valor">
             @if ($errors->has('valor'))
                 <div class="invalid-feedback">{{$errors->first('valor')}}</div>
             @endif
