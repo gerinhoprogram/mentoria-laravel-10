@@ -38,3 +38,20 @@ Route::prefix('produtos')->group(function(){
     Route::delete('/delete', [ProdutosController::class, 'delete'])->name('produto.delete');
 });
 
+
+// http://localhost:8989/produtos/mais alguma coisa
+Route::prefix('clientes')->group(function(){
+    //controller e função
+    Route::get('/', [ClienteController::class, 'index'])->name('cliente.index');
+    
+    // cadastro
+    Route::get('/cadastrarCliente', [ClienteController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
+    Route::post('/cadastrarCliente', [ClienteController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
+
+    // atualizar
+    Route::get('/atualizarCliente/{id}', [ClienteController::class, 'atualizarCliente'])->name('atualizar.cliente');
+    Route::put('/atualizarCliente/{id}', [ClienteController::class, 'atualizarCliente'])->name('atualizar.cliente');
+
+    Route::delete('/delete', [ClienteController::class, 'delete'])->name('cliente.delete');
+});
+
