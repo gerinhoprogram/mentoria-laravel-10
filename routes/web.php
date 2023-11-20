@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +41,7 @@ Route::prefix('produtos')->group(function(){
 
 
 // http://localhost:8989/produtos/mais alguma coisa
-Route::prefix('clientes')->group(function(){
+Route::prefix('cliente')->group(function(){
     //controller e função
     Route::get('/', [ClienteController::class, 'index'])->name('cliente.index');
     

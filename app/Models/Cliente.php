@@ -17,4 +17,20 @@ class Cliente extends Model
         'cep',
         'bairro'
     ];
+
+    public function getClientePesquisarIndex(string $search = null){
+        
+        $cliente = $this->where(function($query) use ($search){
+
+            if($search){
+
+                $query->where('nome', $search);
+                $query->orWhere('nome', 'LIKE', "%{$search}%");
+
+            }
+
+        })->get();
+
+        return $cliente;
+    }
 }
