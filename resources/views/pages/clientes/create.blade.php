@@ -32,7 +32,7 @@
 
         <div class="col-md-12">
             <label for="inputEmail4" class="form-label">Endereço</label>
-            <input type="text" value="{{old('endereco')}}" name="endereco" class="form-control @error('endereco') is-invalid @enderror">
+            <input id="endereco" type="text" value="{{old('endereco')}}" name="endereco" class="form-control @error('endereco') is-invalid @enderror">
                 @if ($errors->has('endereco'))
                     <div class="invalid-feedback">{{$errors->first('endereco')}}</div>
                 @endif        
@@ -40,7 +40,7 @@
 
         <div class="col-md-12">
             <label for="inputEmail4" class="form-label">Logradouro</label>
-            <input type="text" value="{{old('logradouro')}}" name="logradouro" class="form-control @error('logradouro') is-invalid @enderror">
+            <input id="logradouro" type="text" value="{{old('logradouro')}}" name="logradouro" class="form-control @error('logradouro') is-invalid @enderror">
                 @if ($errors->has('logradouro'))
                     <div class="invalid-feedback">{{$errors->first('logradouro')}}</div>
                 @endif        
@@ -48,7 +48,7 @@
 
         <div class="col-md-12">
             <label for="inputEmail4" class="form-label">Bairro</label>
-            <input type="text" value="{{old('bairro')}}" name="bairro" class="form-control @error('bairro') is-invalid @enderror">
+            <input id="bairro" type="text" value="{{old('bairro')}}" name="bairro" class="form-control @error('bairro') is-invalid @enderror">
                 @if ($errors->has('bairro'))
                     <div class="invalid-feedback">{{$errors->first('bairro')}}</div>
                 @endif        

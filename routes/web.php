@@ -56,3 +56,19 @@ Route::prefix('cliente')->group(function(){
     Route::delete('/delete', [ClienteController::class, 'delete'])->name('cliente.delete');
 });
 
+// http://localhost:8989/produtos/mais alguma coisa
+Route::prefix('venda')->group(function(){
+    //controller e função
+    Route::get('/', [VendaController::class, 'index'])->name('venda.index');
+    
+    // cadastro
+    Route::get('/cadastrarVenda', [VendaController::class, 'cadastrarVenda'])->name('cadastrar.venda');
+    Route::post('/cadastrarVenda', [VendaController::class, 'cadastrarVenda'])->name('cadastrar.venda');
+
+    // atualizar
+    Route::get('/atualizarVenda/{id}', [VendaController::class, 'atualizarVenda'])->name('atualizar.venda');
+    Route::put('/atualizarVenda/{id}', [VendaController::class, 'atualizarVenda'])->name('atualizar.venda');
+
+    Route::delete('/delete', [VendaController::class, 'delete'])->name('venda.delete');
+});
+

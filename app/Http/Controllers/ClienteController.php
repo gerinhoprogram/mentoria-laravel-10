@@ -63,10 +63,6 @@ class ClienteController extends Controller
             
             $data = $request->all();
 
-            // retira a virgula do valor
-            $componentes = new Componentes();
-            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
-            
             // acessando o banco
             $buscaRegistro = Cliente::find($id);
             $buscaRegistro->update($data);
