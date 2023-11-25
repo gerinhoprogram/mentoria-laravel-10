@@ -11,16 +11,32 @@ class Venda extends Model
 
     protected $fillable = [
         'numero_da_venda',
-        'produto_id',
+        'produtos_id',
         'cliente_id'
     ];
 
     public function produto(){
-        return $this->belongsTo(Produtos::class);
+        return $this->belongsTo(Produto::class);
     }
 
     public function cliente(){
-        return $this->belongsTo(Produtos::class);
+        return $this->belongsTo(Cliente::class);
+    }
+
+    public function getVendaPesquisarIndex(string $search = null){
+        
+        $venda = $this->where(function($query) use ($search){
+
+            if($search){
+
+                $query->where('numero_da_venda', $search);
+                $query->orWhere('numero_da_venda', 'LIKE', "%{$search}%");
+
+            }
+
+        })->get();
+
+        return $venda;
     }
 
 
