@@ -82,3 +82,21 @@ Route::prefix('dashboard')->group(function(){
    
 });
 
+
+Route::prefix('usuario')->group(function(){
+    //controller e função
+    Route::get('/', [UsuariosController::class, 'index'])->name('usuario.index');
+    
+    // cadastro
+    Route::get('/cadastrarVenda', [VendaController::class, 'cadastrarVenda'])->name('cadastrar.venda');
+    Route::post('/cadastrarVenda', [VendaController::class, 'cadastrarVenda'])->name('cadastrar.venda');
+
+    // atualizar
+    Route::get('/atualizarVenda/{id}', [VendaController::class, 'atualizarVenda'])->name('atualizar.venda');
+    Route::put('/atualizarVenda/{id}', [VendaController::class, 'atualizarVenda'])->name('atualizar.venda');
+
+    Route::delete('/delete', [VendaController::class, 'delete'])->name('venda.delete');
+
+    Route::get('/enviaComprovantePorEmail/{id}', [VendaController::class, 'enviaComprovantePorEmail'])->name('enviaComprovantePorEmail.venda');
+});
+

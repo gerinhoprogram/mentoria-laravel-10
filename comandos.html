@@ -1,0 +1,15 @@
+<!-- ARTISAN -->
+php artisan make:controller UsuarioController
+php artisan make:seeder UsuarioSeeder
+php artisan db:seed
+
+<!-- DOCKER COMPOSE -->
+<!-- roda o container -->
+docker compose up -d
+docker compose exec -t sistema_gestao bash
+
+<!-- GIT -->
+git status
+git add .
+git commit -m
+git push

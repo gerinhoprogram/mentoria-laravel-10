@@ -21,10 +21,14 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        // para subir os dados na tabela precisa
+        // referenciar o seeder
+        // php artisan db:seed
         $this->call([
             ProdutosSeeder::class,
             ClientesSeeder::class,
             VendaSeeder::class,
+            UsuarioSedeer::class
         ]);
     }
 }
