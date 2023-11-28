@@ -71,5 +71,7 @@ Route::prefix('venda')->group(function(){
     Route::put('/atualizarVenda/{id}', [VendaController::class, 'atualizarVenda'])->name('atualizar.venda');
 
     Route::delete('/delete', [VendaController::class, 'delete'])->name('venda.delete');
+
+    Route::get('/enviaComprovantePorEmail/{id}', [VendaController::class, 'enviaComprovantePorEmail'])->name('enviaComprovantePorEmail.venda');
 });
 
