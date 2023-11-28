@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\VendaController;
 use Illuminate\Support\Facades\Route;
@@ -13,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
-|
+| 
+
+ 
 */
 
 Route::get('/', function () {
@@ -41,9 +44,8 @@ Route::prefix('produtos')->group(function(){
 });
 
 
-// http://localhost:8989/produtos/mais alguma coisa
 Route::prefix('cliente')->group(function(){
-    //controller e função
+    //controller e função                                     //name na view
     Route::get('/', [ClienteController::class, 'index'])->name('cliente.index');
     
     // cadastro
@@ -57,7 +59,6 @@ Route::prefix('cliente')->group(function(){
     Route::delete('/delete', [ClienteController::class, 'delete'])->name('cliente.delete');
 });
 
-// http://localhost:8989/produtos/mais alguma coisa
 Route::prefix('venda')->group(function(){
     //controller e função
     Route::get('/', [VendaController::class, 'index'])->name('venda.index');
@@ -73,5 +74,11 @@ Route::prefix('venda')->group(function(){
     Route::delete('/delete', [VendaController::class, 'delete'])->name('venda.delete');
 
     Route::get('/enviaComprovantePorEmail/{id}', [VendaController::class, 'enviaComprovantePorEmail'])->name('enviaComprovantePorEmail.venda');
+});
+
+Route::prefix('dashboard')->group(function(){
+    //controller e função
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+   
 });
 
