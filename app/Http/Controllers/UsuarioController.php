@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsuarioRequest;
 use App\Models\Componentes;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -33,10 +35,14 @@ class UsuarioController extends Controller
         $buscaRegistro = User::find($id);
         $buscaRegistro->delete();
 
+        Toastr::success('Deletado com sucesso!');
+
         return response()->json(['success' => true]);
     }
 
-    public function cadastrarProduto(Request $request){
+    public function cadastrarUsuario(UsuarioRequest $request){
+
+        // dd($request);
 
         if($request->method() == "POST"){
             // cria dados
@@ -44,10 +50,7 @@ class UsuarioController extends Controller
             // dd($request);
 
             $data = $request->all();
-
-            $componentes = new Componentes();
-            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
-            
+            $data['password'] = Hash::make($data['password']);
             User::create($data);
 
             Toastr::success('Cadastrado com sucesso!');
@@ -59,18 +62,15 @@ class UsuarioController extends Controller
 
     }
 
-    public function atualizarUsuario(Request $request, $id){
+    public function atualizarUsuario(UsuarioRequest $request, $id){
 
         if($request->method() == "PUT"){
             
             $data = $request->all();
-
-            // retira a virgula do valor
-            $componentes = new Componentes();
-            $data['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($data['valor']);
             
             // acessando o banco
             $buscaRegistro = User::find($id);
+            $data['password'] = Hash::make($data['password']);
             $buscaRegistro->update($data);
 
             Toastr::success('Atualizado com sucesso!');
